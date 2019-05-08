@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-  //L < 85, M = 85<=m<170, H >=170
+  //L < 36, M = 36<=m<73, H >=73
   int Luz = analogRead(A0);
   Luz = map(Luz, 0, 1023, 0, 255);
   int Hum = analogRead(A1);
@@ -37,29 +37,29 @@ void loop() {
     digitalWrite(humLeds[2], 0);
   }
 
-  if (Luz < 85) {
+  if (Luz < 36) {
     digitalWrite(lightLeds[0], 0);
     digitalWrite(lightLeds[1], 0);
     digitalWrite(lightLeds[2], 1);
-  } else if (Luz >= 85 && Luz < 170) {
+  } else if (Luz >= 36 && Luz < 73) {
     digitalWrite(lightLeds[0], 0);
     digitalWrite(lightLeds[1], 1);
     digitalWrite(lightLeds[2], 0);
-  } else if (Luz >= 170) {
+  } else if (Luz >= 73) {
     digitalWrite(lightLeds[0], 1);
     digitalWrite(lightLeds[1], 0);
     digitalWrite(lightLeds[2], 0);
   }
 
-  if (Hum >= 85 && Luz < 85) {
+  if (Hum >= 85 && Luz < 36) {
     digitalWrite(calef, 1);
     digitalWrite(aircond, 0);
   }
-  else if (Hum < 42 && Luz >= 170) {
+  else if (Hum < 42 && Luz >= 73) {
     digitalWrite(calef, 0);
     digitalWrite(aircond, 1);
   }
-  else if (Hum >= 42 && Hum < 85 && Luz >= 85 && Luz < 170) {
+  else if (Hum >= 42 && Hum < 85 && Luz >= 36 && Luz < 73) {
     digitalWrite(calef, 0);
     digitalWrite(aircond, 0);
   } else {
