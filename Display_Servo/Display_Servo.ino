@@ -8,21 +8,21 @@ int contador = 0;
 
 void setup() {
   lcd.begin(16, 2);
-  lcd.print("Grados:");
   pinMode(9, OUTPUT);
   Severus.attach(9);
   Severus.write(0);
 }
 
 void loop() {
-  lcd.setCursor(7, 0);
+  lcd.setCursor(0, 0);
+  lcd.print("Grados:");
   lcd.print(contador);
   Severus.write(contador);
   contador++;
-  if (contador == 165) {
+  if (contador == 15) {
     contador = 0;
-    Severus.write(0);
-    lcd.print(contador);
   }
   delay(500);
+  Severus.write(contador);
+  lcd.clear();
 }
